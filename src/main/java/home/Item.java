@@ -3,7 +3,7 @@ package home;
 import support.IO;
 
 /**
-* @date @Mar 11, 2018 @1:10:26 AM
+* @date Mar 11, 2018 1:10:26 AM
 * @author Darpan Shah
 *
 */
@@ -14,12 +14,14 @@ public class Item {
 	private String itemName;
 	private Department belongsTo;
 	private ITEM_TYPE type;
+	private double price;
 	
-	public Item(String itemName, Department belongsTo, ITEM_TYPE type) {
+	public Item(String itemName, Department belongsTo, ITEM_TYPE type, double price) {
 		super();
 		this.itemName = itemName;
 		this.belongsTo = belongsTo;
 		this.type = type;
+		this.price = price;
 	}
 	
 	public String getItemName() {
@@ -34,7 +36,14 @@ public class Item {
 	public void setBelongsTo(Department belongsTo) {
 		this.belongsTo = belongsTo;
 	}
-	
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
 	public ITEM_TYPE getType() {
 		return type;
@@ -46,7 +55,7 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [itemName=" + itemName + ", belongsTo=" + belongsTo.name() + ", type=" + type + "]";
+		return "Item [" + itemName + ": belongsTo " + belongsTo.name() + ", Type " + type + ", Price " + price + "]";
 	}
 	public void print(){
 		IO.print(this.toString());

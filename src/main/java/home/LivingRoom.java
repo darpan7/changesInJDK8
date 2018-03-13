@@ -2,11 +2,12 @@ package home;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 import home.Item.ITEM_TYPE;
 
 /**
-* @date @Mar 11, 2018 @1:12:06 AM
+* @date Mar 11, 2018 1:12:06 AM
 * @author Darpan Shah
 *
 */
@@ -31,12 +32,15 @@ public class LivingRoom implements Department{
 
 	@Override
 	public Department loadItems() {
-		items.clear();
-		for(int i=0; i<4; i++){
+		if(items.size() > 0){
+			return this;
+		}
+//		items.clear();
+		for(int i=0; i<6; i++){
 			if(i%2 == 0)
-				items.add(new Item("item"+i, this, ITEM_TYPE.FURNITURE));
+				items.add(new Item("item"+i, this, ITEM_TYPE.FURNITURE, ThreadLocalRandom.current().nextDouble(0, 10000)));
 			else
-				items.add(new Item("item"+i, this, ITEM_TYPE.ELECTRONICS));
+				items.add(new Item("item"+i, this, ITEM_TYPE.ELECTRONICS, ThreadLocalRandom.current().nextDouble(0, 10000)));
 		}
 		return this;
 	}
